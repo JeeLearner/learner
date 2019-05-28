@@ -1,0 +1,13 @@
+wait-notify的使用：
+1.使用场景：一方线程需要临时阻塞，用wait，另一方占有线程并执行某些操作后，需要释放notify
+2.使用举例：消息队列发送端发现队列满了，执行wait阻塞，接收端处理完后执行notify
+注意：这两个必须在synchronized中
+3.伪代码：
+
+synchronized(obj){
+   obj.wait();
+}
+
+synchronized(obj){
+    obj.notify();
+}

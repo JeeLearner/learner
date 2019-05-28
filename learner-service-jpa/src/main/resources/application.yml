@@ -1,0 +1,30 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_jeelearn_oa
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    # 指定连接池中最大的活跃连接数.
+    max-active: 20
+    # 指定连接池最大的空闲连接数量.
+    max-idle: 8
+    # 指定必须保持连接的最小值
+    min-idle: 8
+    # 指定启动连接池时，初始建立的连接数量
+    initial-size: 10
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      # 指定自动创建|更新|验证数据库表结构等配置，配置成update
+      # 表示如果数据库中存在持久化类对应的表就不创建，不存在就创建对应的表
+      ddl-auto: update
+      # Naming strategy
+      # 指定命名策略
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      # 指定数据库方言
+      dialect: org.hibernate.dialect.MySQL5Dialect

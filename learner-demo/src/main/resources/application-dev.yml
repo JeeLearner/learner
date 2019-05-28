@@ -1,0 +1,84 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8080
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: jee
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      enabled: true
+      #SpringBoot 文件上传、下载、设置大小.限制大小30MB
+      max-file-size: 30MB
+      max-request-size: 30MB
+      #如果不限制大小，则设置为-1即可
+      #maxFileSize: -1
+      #maxRequestSize: -1
+  #数据库的配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #mysql
+    driverClassName: com.mysql.jdbc.Driver
+    druid:
+        url: jdbc:mysql://127.0.0.1:3306/learner?useUnicode=true&characterEncoding=utf-8
+        #oracle
+        #driverClassName: oracle.jdbc.driver.OracleDriver
+        #jdbc:oracle:thin:@127.0.0.1:1521:orcl
+        username: root
+        password: root
+        # 下面为连接池的补充设置，应用到上面所有数据源中
+        # 初始化大小，最小，最大
+        initial-size: 5
+        min-idle: 3
+        max-active: 20
+        # 配置获取连接等待超时的时间
+        max-wait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        time-between-eviction-runs-millis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        min-evictable-idle-time-millis: 30000
+        validationQuery: SELECT 'x' FROM DUAL
+        #SqlServer要配置为 select 1
+        #validationQuery: select 1
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        pool-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 20
+        stat-view-servlet:
+            enabled: true
+            url-pattern: /druid/*
+            #login-username: admin
+            #login-password: admin
+        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        filter:
+            stat:
+                log-slow-sql: true
+                slow-sql-millis: 1000
+                merge-sql: false
+            wall:
+                config:
+                    multi-statement-allow: true
+        # 合并多个DruidDataSource的监控数据
+        use-global-data-source-stat: true
+jee:
+  httpclient:
+      #连接池的最大连接数默认为0
+      maxConnTotal: 0
+      #单个主机的最大连接数
+      maxConnectPerRoute: 200
+      #连接超时默认2s
+      connectTimeout: 2000
+      #读取超时默认30s
+      readTimeout: 30000

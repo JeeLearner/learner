@@ -1,0 +1,156 @@
+swagger: '2.0'
+info:
+  title: 某系统接口平台
+  description: 这是一个项目文档的简单示例
+  version: 1.0
+basePath: /api/v1
+
+schemes:
+  - http
+
+#认证
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "token"
+    in: "header"
+
+#定义接口数据
+paths:
+  /user/{userId}:
+    get:
+      tags:
+        -  用户服务
+      summary: 获取某用户信息
+      description: 传入用户编号，获取用户信息
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: path
+          description: 用户id
+          required: true
+      responses:
+        '200':
+          description: 用户信息
+          schema:
+            $ref: '#/definitions/Result'
+  /user/list:
+    get:
+      tags:
+        - 用户服务
+      summary: 获取用户列表
+      description: 查询用户列表
+      produces:
+        - application/json
+      parameters:
+        - name: username
+          in: query
+          description: 用户名
+      responses:
+        '200':
+          description: 用户列表
+          schema:
+            $ref: '#/definitions/Result'
+  /user/save:
+    post:
+      tags:
+        - 用户服务
+      summary: 用户新增
+      description: 用户新增接口
+      produces:
+        - application/json
+      parameters:
+        - name: user
+          in: body
+          description: 用户体
+          required: true
+          schema:
+             $ref: '#/definitions/user'
+      responses:
+        '200':
+          description: 用户体
+          schema:
+            $ref: '#/definitions/Result'
+  /user/file:
+    post:
+      tags:
+        - 用户服务
+      summary: 用户文件上传
+      description: 用户文件上传接口
+      produces:
+        - multipart/form-data
+      parameters:
+        - name: headImg
+          in: formData
+          type: fileupload
+          description: 用户头像
+      responses:
+        '200':
+          description:
+          schema:
+            $ref: '#/definitions/Result'
+  /user/delete/{id}:
+    delete:
+      tags:
+        - 用户服务
+      summary: 用户删除
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          description: 用户ID(int)
+          in: query
+          type: integer
+          required: true
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Result'
+
+  /user/delete:
+    delete:
+      tags:
+        - 用户服务
+      summary: 用户批量删除
+      produces:
+        - application/json
+      parameters:
+        - name: ids
+          description: 用户ID数组（long）
+          in: query
+          type: array
+          items:
+            type: integer
+            format: int64
+            default: 0
+          required: true
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Result'
+
+#定义数据模型
+definitions:
+  Result:
+      type: object
+      properties:
+        code:
+          description: 状态码 0：成功  非0：失败
+          type: integer
+          format: int32
+        msg:
+          description: 消息内容
+          type: string
+        data:
+          description: 结果数据集
+  user:
+    type: object
+    properties:
+      userId:
+        description: 用户id
+        type: integer
+        format: int64
+      username:
+        description: 用户名
+        type: string
