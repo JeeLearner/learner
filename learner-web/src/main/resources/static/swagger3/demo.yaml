@@ -9,11 +9,20 @@ schemes:
   - http
 
 #认证
+#securityDefinitions:
+#  APIKey:
+#    type: apiKey
+#    name: token
+#    in: header
+#security:
+#  - APIKey: []
 securityDefinitions:
   api_key:
-    type: "apiKey"
-    name: "token"
-    in: "header"
+    type: apiKey
+    name: token
+    in: header
+security:
+  - api_key: []
 
 #定义接口数据
 paths:

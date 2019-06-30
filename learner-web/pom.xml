@@ -18,6 +18,12 @@
         <dependency>
             <groupId>com.jee</groupId>
             <artifactId>learner-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jee</groupId>
+            <artifactId>learner-service-sys</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

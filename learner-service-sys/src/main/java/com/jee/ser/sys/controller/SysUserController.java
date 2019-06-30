@@ -1,4 +1,4 @@
-package com.jee.web.controller;
+package com.jee.ser.sys.controller;
 
 import com.jee.common.result.ResultInfo;
 import com.jee.ser.sys.entity.SysUser;
@@ -16,17 +16,17 @@ import java.util.List;
  * @Date: 2019/5/20
  * @Version:v1.0
  */
-@RequestMapping(value = "/web/user")
 @RestController
-public class UserController {
+@RequestMapping(value = "/sys/user")
+public class SysUserController {
 
     @Autowired
-    SysUserService userService;
+    SysUserService sysUserService;
 
     @GetMapping(value = "/list")
     public ResultInfo list(){
-        List<SysUser> users = userService.list();
-        return ResultInfo.success(users);
+        List<SysUser> list = sysUserService.list();
+        return ResultInfo.success(list);
     }
 }
 

@@ -10,8 +10,8 @@ public enum CodeMsg {
     REQUEST_TYPE_ERROR(500102, "请求类型异常：%s"),
     PERMISSION_ERROR(500103, "权限不足"),
     SQL_DATA_ACCESS_ERROR(500111, "SQL数据验证失败"),
-    COMMON_NOFOUND_HANDLER(500111, "路径不存在，请检查路径是否正确")
-
+    COMMON_NOFOUND_HANDLER(500111, "路径不存在，请检查路径是否正确"),
+    COMMON_CHAR_ILLEGAL(111, "内容含非法字符")
 
     ;
 

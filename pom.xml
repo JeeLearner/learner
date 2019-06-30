@@ -22,7 +22,9 @@
         <module>learner-service-jpa</module>
 		<module>learner-service-sys</module>-->
 		<module>learner-demo</module>
-	</modules>
+        <module>learner-service-mybatis</module>
+        <module>learner-poi</module>
+    </modules>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -32,11 +34,11 @@
 		<mysql.version>5.1.47</mysql.version>
 		<http.core.version>4.4.9</http.core.version>
 		<fastjson.version>1.2.47</fastjson.version>
-		<!--<commons.lang.version>2.6</commons.lang.version>
+		<commons.lang.version>2.6</commons.lang.version>
 		<commons.fileupload.version>1.2.2</commons.fileupload.version>
 		<commons.io.version>2.5</commons.io.version>
 		<commons.codec.version>1.10</commons.codec.version>
-		<commons.configuration.version>1.10</commons.configuration.version>-->
+		<commons.configuration.version>1.10</commons.configuration.version>
 	</properties>
 
 	<dependencies>
@@ -134,11 +136,11 @@
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson.version}</version>
 		</dependency>
-		<!--		<dependency>
-                    <groupId>commons-lang</groupId>
-                    <artifactId>commons-lang</artifactId>
-                    <version>${commons.lang.version}</version>
-                </dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons.lang.version}</version>
+		</dependency>
                 <dependency>
                     <groupId>commons-fileupload</groupId>
                     <artifactId>commons-fileupload</artifactId>
@@ -158,7 +160,7 @@
                     <groupId>commons-configuration</groupId>
                     <artifactId>commons-configuration</artifactId>
                     <version>${commons.configuration.version}</version>
-                </dependency>-->
+                </dependency>
 
 	</dependencies>
 
